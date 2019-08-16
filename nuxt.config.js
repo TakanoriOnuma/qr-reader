@@ -1,6 +1,17 @@
 
 export default {
   mode: 'spa',
+  manifest: {
+    name: 'QR Reader',
+    short_name: 'QR',
+    title: 'QR Reader',
+    'og:title': 'QR Reader',
+    description: 'QR Reader',
+    'og:description': 'QR Reader',
+    lang: 'ja',
+    theme_color: '#ffffff',
+    background_color: '#ffffff'
+  },
   /*
   ** Headers of the page
   */
