@@ -1,5 +1,11 @@
+const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
+  router: {
+    base: '/qr-reader/'
+  }
+} : {};
 
 export default {
+  ...routerBase,
   mode: 'spa',
   manifest: {
     name: 'QR Reader',
