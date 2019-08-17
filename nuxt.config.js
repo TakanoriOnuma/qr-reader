@@ -12,6 +12,10 @@ export default {
     theme_color: '#ffffff',
     background_color: '#ffffff'
   },
+  server: {
+    port: 8080,
+    host: '0.0.0.0'
+  },
   /*
   ** Headers of the page
   */
