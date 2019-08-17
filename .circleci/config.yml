@@ -1,0 +1,64 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: node:10.16.3
+        environment:
+          TZ: /usr/share/zoneinfo/Asia/Tokyo
+    working_directory: /dist
+    steps:
+      - checkout
+      - run:
+          name: yarn install
+          command: yarn install
+      - run:
+          name: build
+          command: yarn run build
+      - persist_to_workspace:
+          root: /dist
+          paths:
+            - .
+  deploy:
+    docker:
+      - image: node:10.16.3
+        environment:
+          TZ: /usr/share/zoneinfo/Asia/Tokyo
+    working_directory: /dist
+    steps:
+      - attach_workspace:
+          at: /dist
+      - add_ssh_keys
+      - run:
+          name: install
+          command: yarn install
+      - run:
+          name: ssh setting
+          command: |
+            mkdir ~/.ssh
+            touch ~/.ssh/known_hosts
+            chmod 644 ~/.ssh/known_hosts
+            ssh-keyscan github.com >> ~/.ssh/known_hosts
+      - run:
+          name: user setting
+          command: |
+            git config --global user.name  "CircleCI"
+            git config --global user.email "circleci@gh-pages.com"
+      - run:
+          name: deploy
+          command: yarn run deploy
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              #ignore: gh-pages
+              only: master
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
