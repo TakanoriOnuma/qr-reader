@@ -54,8 +54,7 @@ workflows:
       - build:
           filters:
             branches:
-              #ignore: gh-pages
-              only: master
+              ignore: gh-pages
       - deploy:
           requires:
             - build
