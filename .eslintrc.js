@@ -13,5 +13,10 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
+    semi: ['error', 'always'],
+    'space-before-function-paren': 'off',
+    'arrow-parens': 'off',
+    'comma-dangle': 'off',
+    'no-multi-spaces': 'off',
   }
 }

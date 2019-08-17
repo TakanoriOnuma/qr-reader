@@ -1,0 +1,43 @@
+{
+  // ミニマップを非表示にする
+  "editor.minimap.enabled": false,
+
+  // npmタスクを表示させる
+  "npm.enableScriptExplorer": true,
+
+  // eslintをvueでも適応させる
+  "eslint.validate": [
+    {
+      "language": "javascript",
+      "autoFix": true
+    },
+    {
+      "language": "typescript",
+      "autoFix": true
+    },
+    {
+      "language": "vue",
+      "autoFix": true
+    },
+  ],
+  "eslint.autoFixOnSave": true,
+  // formatはfalseにしないと変な変換がされる場合がある
+  "editor.formatOnSave": false,
+
+  // スペルチェックの設定
+  "cSpell.ignoreRegExpList": ["[０-９Ａ-Ｚａ-ｚぁ-んァ-ヶ亜-熙纊-黑]+"],
+  "cSpell.userWords": [
+    "submenu",
+    "titlebar"
+  ],
+
+  // emmetを強制的に有効にすると、どのブロックでもhtmlのemmetになってしまう
+  // "emmet.includeLanguages": {
+  //   "vue": "html"
+  // }
+
+  // カスタムブロックの設定を入れてみるけど上手くいかなかった
+  // "vetur.grammar.customBlocks": {
+  //   "html": "html",
+  // },
+}
